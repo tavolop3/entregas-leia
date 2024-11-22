@@ -17,10 +17,8 @@ class Agent(object):
             )
             if self.location.is_dirty():
                 self.clean()
-                print("Estoy limpiando")
             else:
                 self.move()
-                print(f"Me movi a {self.location}")
             print(self.environment)
         self.steps = steps
             
@@ -30,8 +28,10 @@ class Agent(object):
     def clean(self):
         self.location.clean()
         self.points += 10
+        print("Estoy limpiando")
 
     def move(self):
+        print(f"Estoy parado en {self.location}")
         self.location.random_dirty()
         self.location = self.location.neighbour
         self.points -= 1
@@ -40,8 +40,8 @@ class Agent(object):
         pass
 
     def get_performance(self):
-        print(self.points)
-        print(self.steps)
+        print(f"Puntos: {self.points}")
+        print(f"Pasos: {self.steps}")
         return self.points / self.steps
 
     def __str__(self):

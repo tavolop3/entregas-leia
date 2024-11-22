@@ -5,4 +5,4 @@ if __name__ == "__main__":
     env = Environment()
     ag = Agent(env)
     ag.start(1000)
-    print(ag.get_performance())
+    print(f"Performance: {ag.get_performance()}")
