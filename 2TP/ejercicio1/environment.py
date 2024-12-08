@@ -65,9 +65,13 @@ class Environment:
         P = RoomState.PIT
 
         self.rooms = [
-            [Room("1", P), Room("2", P), Room("3", D)],
-            [Room("4", P), Room("5", D), Room("6", P)],
-            [Room("7", P), Room("8", D), Room("9", P)],
+            # [Room("01", P), Room("02", B), Room("03", B), Room("04", D)],
+            # [Room("05", B), Room("06", B), Room("07", P), Room("08", B)],
+            # [Room("09", C), Room("10", B), Room("11", C), Room("12", D)],
+            # [Room("13", C), Room("14", C), Room("15", D), Room("16", D)]
+            [Room("01", P), Room("02", P), Room("03", P)],
+            [Room("04", P), Room("05", D), Room("06", P)],
+            [Room("07", P), Room("08", D), Room("09", P)],
         ]
 
     def get_dimensions(self) -> tuple[int, int]:

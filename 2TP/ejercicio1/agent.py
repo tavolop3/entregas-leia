@@ -172,6 +172,8 @@ class Agent:
             x: posición inicial en x del agente.
             y: posición inicial en y del agente.
         """
+        self.sensor = Sensor()
+        self.actuator = Actuator()
         self.env = env
         self.model = self.init_model()
         self.x = x
@@ -193,15 +195,14 @@ class Agent:
         Args:
             steps: cantidad de pasos a simular.
         """
-        for _ in range(steps):
-            print(f"====Paso {_}=======")
-            sensor = Sensor()
-            actuator = Actuator()
-            perception = sensor.perceive(self.env.rooms[self.x][self.y])
-            self.x, self.y = actuator.act(self.x, self.y, self.env, perception, self.model)
+        for i in range(steps):
+            print(f"====Paso {i}=======")
+
+            perception = self.sensor.perceive(self.env.rooms[self.x][self.y])
+            self.x, self.y = self.actuator.act(self.x, self.y, self.env, perception, self.model)
             print(f"Agente: me movi a la habitación [{self.env.rooms[self.x][self.y].name}]")
             print(self.env)
-            perception = sensor.perceive(self.env.rooms[self.x][self.y])
+            perception = self.sensor.perceive(self.env.rooms[self.x][self.y])
             if perception.is_pit():
                 print("Agente: Me caí en un pozo... :(")
         print("Fin de la simulación")
